@@ -6,11 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".presentation.MainActivity">
 
-    <TextView
-        android:id="@+id/tv_call_test"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_call_test"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="chats fragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
