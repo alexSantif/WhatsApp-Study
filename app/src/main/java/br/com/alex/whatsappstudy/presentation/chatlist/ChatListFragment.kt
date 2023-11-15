@@ -11,8 +11,11 @@ import br.com.alex.whatsappstudy.R
 import br.com.alex.whatsappstudy.presentation.BaseAdapter
 import br.com.alex.whatsappstudy.presentation.User
 import br.com.alex.whatsappstudy.presentation.YellowView
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ChatListFragment : Fragment() {
+
+    private val chatListViewModel: ChatListViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
