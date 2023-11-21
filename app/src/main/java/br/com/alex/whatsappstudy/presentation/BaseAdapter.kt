@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.alex.whatsappstudy.R
+import br.com.alex.whatsappstudy.data.model.News
+import br.com.alex.whatsappstudy.data.model.NewsResponse
 
 class BaseAdapter<T: BaseViewHolder<U>, U>(private val viewHolderLauncher: (ViewGroup) -> T) : RecyclerView.Adapter<T>() {
 
@@ -30,15 +32,10 @@ abstract class BaseViewHolder<U>(layout: Int, viewGroup: ViewGroup) : RecyclerVi
     abstract fun bind(item: U)
 }
 
-class YellowView(viewGroup: ViewGroup) : BaseViewHolder<User>(R.layout.chats_item_view, viewGroup) {
+class YellowView(viewGroup: ViewGroup) : BaseViewHolder<News>(R.layout.chats_item_view, viewGroup) {
 
-    override fun bind(item: User) {
-        itemView.findViewById<TextView>(R.id.tv_chat_list_name).text = item.name
-        itemView.findViewById<TextView>(R.id.tv_chat_list_message).text = item.email
+    override fun bind(item: News) {
+        itemView.findViewById<TextView>(R.id.tv_chat_list_name).text = item.title
+        itemView.findViewById<TextView>(R.id.tv_chat_list_message).text = item.title
     }
 }
-
-data class User(
-    val name: String,
-    val email: String
-)
