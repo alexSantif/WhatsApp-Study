@@ -5,5 +5,5 @@ import br.com.alex.whatsappstudy.data.model.NewsResponse
 
 interface ChatsRepository {
 
-    suspend fun getNews(): AppResult<NewsResponse>
+    suspend fun getNews(): AppResult<NewsResponse?>
 }

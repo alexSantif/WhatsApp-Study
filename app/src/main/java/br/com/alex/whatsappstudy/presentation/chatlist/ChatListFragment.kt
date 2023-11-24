@@ -41,7 +41,7 @@ class ChatListFragment : Fragment() {
                 rv.adapter = BaseAdapter {
                     YellowView(it)
                 }.apply {
-                    val noticias = news.data.articles?.toMutableList()
+                    val noticias = news.data?.articles?.toMutableList()
                     if (noticias != null) {
                         this.items = noticias
                     }
