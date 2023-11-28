@@ -11,14 +11,15 @@ import br.com.alex.whatsappstudy.presentation.status.StatusFragment
 class PagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
     override fun getItemCount(): Int {
-        return 3
+        return 4
     }
 
     override fun createFragment(position: Int): Fragment {
         return when(position) {
-            0 -> ChatListFragment()
-            1 -> StatusFragment()
-            2 -> CallsFragment()
+            0 -> CallsFragment()
+            1 -> ChatListFragment()
+            2 -> StatusFragment()
+            3 -> CallsFragment()
             else -> { throw NotFoundException("fragment errado") }
         }
     }

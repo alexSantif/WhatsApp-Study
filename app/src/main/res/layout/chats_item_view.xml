@@ -25,8 +25,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:text="Nome teste"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_chat_list_message_time"
         app:layout_constraintStart_toEndOf="@+id/iv_chat_list_image"
         app:layout_constraintTop_toTopOf="parent" />
 

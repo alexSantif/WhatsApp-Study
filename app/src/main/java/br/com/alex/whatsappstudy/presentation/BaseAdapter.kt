@@ -31,11 +31,3 @@ abstract class BaseViewHolder<U>(layout: Int, viewGroup: ViewGroup) : RecyclerVi
 
     abstract fun bind(item: U)
 }
-
-class YellowView(viewGroup: ViewGroup) : BaseViewHolder<News>(R.layout.chats_item_view, viewGroup) {
-
-    override fun bind(item: News) {
-        itemView.findViewById<TextView>(R.id.tv_chat_list_name).text = item.title
-        itemView.findViewById<TextView>(R.id.tv_chat_list_message).text = item.title
-    }
-}
