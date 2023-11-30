@@ -18,7 +18,7 @@ class ChatListFragment : Fragment() {
     private val chatListViewModel: ChatListViewModel by viewModel()
 
     private var _binding: FragmentChatListBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,24 +26,22 @@ class ChatListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentChatListBinding.inflate(inflater, container, false)
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.rvChats.layoutManager = LinearLayoutManager(requireContext())
+        binding?.rvChats?.layoutManager = LinearLayoutManager(requireContext())
 
         chatListViewModel.getNews()
         lifecycleScope.launchWhenStarted {
             chatListViewModel.uiState.collectLatest { news ->
-                println(">>>> " + news.data)
-                binding.rvChats.adapter = BaseAdapter {
+                binding?.rvChats?.adapter = BaseAdapter {
                     ChatListAdapter(it)
                 }.apply {
-                    val noticias = news.data?.articles?.toMutableList()
-                    if (noticias != null) {
-                        this.items = noticias
+                    news.data?.articles?.toMutableList()?.let {
+                        this.items = it
                     }
                 }
             }

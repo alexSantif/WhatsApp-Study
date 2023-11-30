@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.viewpager2.widget.ViewPager2
 import br.com.alex.whatsappstudy.R
+import br.com.alex.whatsappstudy.common.PagerAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -25,10 +26,10 @@ class MainActivity : AppCompatActivity() {
         TabLayoutMediator(tabLayout, viewPager) { tab, index ->
             tab.text = when(index) {
                 0 -> ""
-                1 -> "Conversas"
-                2 -> "Atualizações"
-                3 -> "Chamadas"
-                else -> { throw Resources.NotFoundException("fragment errado") }
+                1 -> getString(R.string.chat_list_fragment_name)
+                2 -> getString(R.string.status_fragment_name)
+                3 -> getString(R.string.calls_fragment_name)
+                else -> { throw Resources.NotFoundException(getString(R.string.fragment_not_found_error)) }
             }
         }.attach()
         tabLayout.setTabWidthAsWrapContent(0)

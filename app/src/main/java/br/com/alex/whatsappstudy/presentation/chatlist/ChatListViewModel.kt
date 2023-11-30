@@ -19,15 +19,7 @@ class ChatListViewModel(private val useCase: ChatsUseCase) : ViewModel() {
 
     fun getNews() {
         viewModelScope.launch {
-            when (val newsResult = useCase.getNews()) {
-                is AppResult.Success -> {
-                    _uiState.value = BaseUiState.Success(newsResult.value!!)
-                }
-//            is AppResult.Error -> news.value = BaseUiState.Error(Throwable())
-                else -> {
-                }
-            }
-            val newsResult = useCase.getNews().onSuccess {
+            useCase.getNews().onSuccess {
                 _uiState.value = BaseUiState.Success(it)
             }.onFailure {
 //                _uiState.value = BaseUiState.Error(it)

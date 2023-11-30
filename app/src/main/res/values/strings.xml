@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">WhatsApp Clone for Study</string>
+
+    <string name="chat_list_fragment_name">Conversas</string>
+    <string name="status_fragment_name">Atualizações</string>
+    <string name="calls_fragment_name">Chamadas</string>
+    <string name="chat_fragment_name">Chat</string>
+    <string name="fragment_not_found_error">Fragmento não encontrado</string>
+    <string name="message_date_time">%1d:%2d</string>
 </resources>
