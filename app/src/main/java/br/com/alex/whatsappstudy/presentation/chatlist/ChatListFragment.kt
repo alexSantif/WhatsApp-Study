@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.alex.whatsappstudy.databinding.FragmentChatListBinding
-import br.com.alex.whatsappstudy.presentation.BaseAdapter
+import br.com.alex.whatsappstudy.core.BaseAdapter
 import br.com.alex.whatsappstudy.presentation.chatlist.adapter.ChatListAdapter
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel

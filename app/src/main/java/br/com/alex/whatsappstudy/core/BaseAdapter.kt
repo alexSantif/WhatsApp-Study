@@ -1,12 +1,8 @@
-package br.com.alex.whatsappstudy.presentation
+package br.com.alex.whatsappstudy.core
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import br.com.alex.whatsappstudy.R
-import br.com.alex.whatsappstudy.data.model.News
-import br.com.alex.whatsappstudy.data.model.NewsResponse
 
 class BaseAdapter<T: BaseViewHolder<U>, U>(private val viewHolderLauncher: (ViewGroup) -> T) : RecyclerView.Adapter<T>() {
 

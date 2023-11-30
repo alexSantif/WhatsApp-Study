@@ -7,9 +7,8 @@ import androidx.annotation.RequiresApi
 import br.com.alex.whatsappstudy.R
 import br.com.alex.whatsappstudy.common.DATE_MASK_FORMAT
 import br.com.alex.whatsappstudy.data.model.News
-import br.com.alex.whatsappstudy.presentation.BaseViewHolder
+import br.com.alex.whatsappstudy.core.BaseViewHolder
 import com.bumptech.glide.Glide
-import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
