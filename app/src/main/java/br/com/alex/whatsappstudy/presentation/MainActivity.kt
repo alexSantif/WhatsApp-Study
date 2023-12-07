@@ -4,6 +4,7 @@ import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
+import androidx.appcompat.widget.Toolbar
 import androidx.viewpager2.widget.ViewPager2
 import br.com.alex.whatsappstudy.R
 import br.com.alex.whatsappstudy.common.PagerAdapter
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
+    private lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +23,8 @@ class MainActivity : AppCompatActivity() {
 
         tabLayout = findViewById(R.id.tl_tabs)
         viewPager = findViewById(R.id.vp_fragments)
+        toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         viewPager.adapter = PagerAdapter(this)
         TabLayoutMediator(tabLayout, viewPager) { tab, index ->
@@ -33,6 +37,7 @@ class MainActivity : AppCompatActivity() {
             }
         }.attach()
         tabLayout.setTabWidthAsWrapContent(0)
+        viewPager.setCurrentItem(1, false)
     }
 
     fun TabLayout.setTabWidthAsWrapContent(tabPosition: Int) {
