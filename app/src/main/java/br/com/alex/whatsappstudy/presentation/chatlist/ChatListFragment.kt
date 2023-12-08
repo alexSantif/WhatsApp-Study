@@ -40,7 +40,7 @@ class ChatListFragment : Fragment() {
                 binding?.rvChats?.adapter = BaseAdapter {
                     ChatListAdapter(it)
                 }.apply {
-                    news.data?.articles?.toMutableList()?.let {
+                    news.data?.chats?.toMutableList()?.let {
                         this.items = it
                     }
                 }

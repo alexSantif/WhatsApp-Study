@@ -6,24 +6,23 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import br.com.alex.whatsappstudy.R
 import br.com.alex.whatsappstudy.common.DATE_MASK_FORMAT
-import br.com.alex.whatsappstudy.data.model.News
+import br.com.alex.whatsappstudy.data.model.Chat
 import br.com.alex.whatsappstudy.core.BaseViewHolder
 import com.bumptech.glide.Glide
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.*
 
 class ChatListAdapter(viewGroup: ViewGroup) :
-    BaseViewHolder<News>(R.layout.chats_item_view, viewGroup) {
+    BaseViewHolder<Chat>(R.layout.chats_item_view, viewGroup) {
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun bind(item: News) {
+    override fun bind(item: Chat) {
 
         val pattern = DateTimeFormatter.ofPattern(DATE_MASK_FORMAT)
-        val localDateTime = LocalDateTime.parse(item.publishedAt, pattern)
+        val localDateTime = LocalDateTime.parse(item.messages?.first()?.publishedAt, pattern)
 
-        itemView.findViewById<TextView>(R.id.tv_chat_list_name).text = item.source?.name
-        itemView.findViewById<TextView>(R.id.tv_chat_list_message).text = item.title
+        itemView.findViewById<TextView>(R.id.tv_chat_list_name).text = item.author
+        itemView.findViewById<TextView>(R.id.tv_chat_list_message).text = item.messages?.first()?.text
         itemView.findViewById<TextView>(R.id.tv_chat_list_message_time).text =
             itemView.context.getString(
                 R.string.message_date_time,
