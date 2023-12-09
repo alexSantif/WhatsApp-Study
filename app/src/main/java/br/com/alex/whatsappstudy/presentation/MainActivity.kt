@@ -8,26 +8,23 @@ import androidx.appcompat.widget.Toolbar
 import androidx.viewpager2.widget.ViewPager2
 import br.com.alex.whatsappstudy.R
 import br.com.alex.whatsappstudy.common.PagerAdapter
+import br.com.alex.whatsappstudy.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var tabLayout: TabLayout
-    private lateinit var viewPager: ViewPager2
-    private lateinit var toolbar: Toolbar
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+        setSupportActionBar(binding.toolbar)
 
-        tabLayout = findViewById(R.id.tl_tabs)
-        viewPager = findViewById(R.id.vp_fragments)
-        toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-
-        viewPager.adapter = PagerAdapter(this)
-        TabLayoutMediator(tabLayout, viewPager) { tab, index ->
+        binding.vpFragments.adapter = PagerAdapter(this)
+        TabLayoutMediator(binding.tlTabs, binding.vpFragments) { tab, index ->
             tab.text = when(index) {
                 0 -> ""
                 1 -> getString(R.string.chat_list_fragment_name)
@@ -36,11 +33,11 @@ class MainActivity : AppCompatActivity() {
                 else -> { throw Resources.NotFoundException(getString(R.string.fragment_not_found_error)) }
             }
         }.attach()
-        tabLayout.setTabWidthAsWrapContent(0)
-        viewPager.setCurrentItem(1, false)
+        binding.tlTabs.setTabWidthAsWrapContent(0)
+        binding.vpFragments.setCurrentItem(1, false)
     }
 
-    fun TabLayout.setTabWidthAsWrapContent(tabPosition: Int) {
+    private fun TabLayout.setTabWidthAsWrapContent(tabPosition: Int) {
         val layout = (this.getChildAt(0) as LinearLayout).getChildAt(tabPosition) as LinearLayout
         val layoutParams = layout.layoutParams as LinearLayout.LayoutParams
         layoutParams.weight = 0f

@@ -1,19 +1,22 @@
 package br.com.alex.whatsappstudy.presentation.chatlist.adapter
 
 import android.os.Build
+import android.os.Handler
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import br.com.alex.whatsappstudy.R
 import br.com.alex.whatsappstudy.common.DATE_MASK_FORMAT
-import br.com.alex.whatsappstudy.data.model.Chat
+import br.com.alex.whatsappstudy.common.onSingleClick
 import br.com.alex.whatsappstudy.core.BaseViewHolder
+import br.com.alex.whatsappstudy.data.model.Chat
 import com.bumptech.glide.Glide
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class ChatListAdapter(viewGroup: ViewGroup) :
-    BaseViewHolder<Chat>(R.layout.chats_item_view, viewGroup) {
+    BaseViewHolder<Chat>(R.layout.chat_list_item_view, viewGroup) {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun bind(item: Chat) {
@@ -35,5 +38,12 @@ class ChatListAdapter(viewGroup: ViewGroup) :
             .load(item.urlToImage)
             .centerCrop()
             .into(itemView.findViewById(R.id.iv_chat_list_image))
+    }
+
+    override fun onItemClick(onClick: View.OnClickListener) {
+        itemView.setOnClickListener {
+            onClick.onClick(it)
+
+        }
     }
 }

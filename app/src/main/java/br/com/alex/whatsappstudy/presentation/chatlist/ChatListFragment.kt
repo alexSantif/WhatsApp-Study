@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.com.alex.whatsappstudy.databinding.FragmentChatListBinding
+import br.com.alex.whatsappstudy.R
 import br.com.alex.whatsappstudy.core.BaseAdapter
+import br.com.alex.whatsappstudy.databinding.FragmentChatListBinding
+import br.com.alex.whatsappstudy.presentation.chat.ChatFragment
 import br.com.alex.whatsappstudy.presentation.chatlist.adapter.ChatListAdapter
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -42,6 +44,12 @@ class ChatListFragment : Fragment() {
                 }.apply {
                     news.data?.chats?.toMutableList()?.let {
                         this.items = it
+                        this.onClick = {
+                            requireActivity().supportFragmentManager.beginTransaction().apply {
+                                replace(R.id.base_container, ChatFragment())
+                                addToBackStack("chat_fragment")
+                            }.commit()
+                        }
                     }
                 }
             }
